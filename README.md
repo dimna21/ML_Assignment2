@@ -5,7 +5,9 @@ Kaggle-ის კონკურსი მიზნად ისახავს 
 
 # *რეპოზიტორიის სტრუქტურა*
 model_experiment_rf.ipynb - RandomForest მოდელის სრული pipeline-ის აღწერა.
+
 model_experiment_ada.ipynb - Adaboost მოდელის სრული pipeline-ის აღწერა.
+
 model_experiment_xgb.ipynb - XGBoost მოდელის სრული pipeline-ის აღწერა.
 
 model_inference_rf.ipynb - საუკეთესო RandomForest მოდელით ტესტ სეტზე პრედიქცია.
