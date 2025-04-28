@@ -39,11 +39,14 @@ XGBoost - F1 0.81/0.77
 
 # *MLFlow tracking*
 ექსპერიმენტების სასაფლაო:
+
 https://dagshub.com/dimna21/ML_Assignment2/experiments
 
 დარეგისტრირებული მოდელები:
 
 RandomForest: https://dagshub.com/dimna21/ML_Assignment2/models/RF_Final/1
+
 AdaBoost: https://dagshub.com/dimna21/ML_Assignment2/models/ADA_Final/1
+
 XGBoost: https://dagshub.com/dimna21/ML_Assignment2/models/XGB_Final/1
 
