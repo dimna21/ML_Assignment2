@@ -26,26 +26,24 @@ Cleaning ნაწილში მონაცემების წაკით
 Feature selection ნაწილში გამოყენებულია კორელაციის ფილტრი 0.8-იანი threshold-ით, გადარჩეული ცვლადებიდან საუკეთესოებს კი Recursive Feature Selector ირჩევს.
 
 # *Training*
-პროექტში გატესტილია სამი მოდელი: RandomForest, XGBoost, Adaboost. ერთ-ერთი მთავარი პრობლემა, რასაც გადავეყარე, იყო ის, რომ GridSearch-ის გაშვების შემდეგ მონაცემთა დიდი რაოდენობის გამო Kaggle-ს მეხსიერება ივსებოდა და ნოუთბუქი იქრაშებოდა, ამიტომ ყველა ექსპერიმენტი ინდივიდუალურადაა გაშვებული.
-მოდელის ტრენინგამდე ხდება მონაცემების Downsampling და 3.5%იანი თარგეთის წილის 30%მდე გაზრდა. თავდაპირველად სამივე მოდელს Downsampling-ის გარეშე ვაკეთებდი, რის გამოც მოდელებს დაბალი recall ჰქონდათ.
+პროექტში გატესტილია სამი მოდელი: RandomForest, XGBoost, Adaboost. ერთ-ერთი მთავარი პრობლემა, რასაც გადავეყარე, იყო ის, რომ GridSearch-ის გაშვების შემდეგ მონაცემთა დიდი რაოდენობის გამო Kaggle-ს მეხსიერება ივსებოდა და ნოუთბუქი იქრაშებოდა, ამიტომ ყველა ექსპერიმენტი ინდივიდუალურადაა გაშვებული. პარამეტრების tuning-ს ყოველი გაშვების შემდეგ precision და recall-ის ანალიზის საფუძველზე მცირედით ვცვლიდი და ოპტიმალური შედეგისკენ სვლას ვცდილობდი.
+
+თითოეული მოდელის ტრენინგამდე ხდება მონაცემების Downsampling და 3.5%-იანი თარგეთის წილის 30%-მდე გაზრდა. თავდაპირველად XGBoost მოდელს Downsampling-ის გარეშე ვაკეთებდი, რის გამოც დაბალი recall ჰქონდა, რამდენიმე ექსპერიმენტის შემდეგ კი RandomUndersampler-ის 0.3-იანმა sampling_strategy პარამეტრმა ყველაზე კარგად გაამართლა და F1 score 0.6-ის მიდამოდან 0.8-მდე აიყვანა. საიტერესო იყო learning rate-ისა და ხეების რაოდენობის ბალანსის დაჭერაც ისე, რომ მოდელი overfit-ში არ გასულიყო. learning rate-ის ნელ-ნელა დაწევამ და მოდელის კომპლექსურობის ხეების რაოდენობის ხარჯზე გაზრდამ დროთა განმავლობაში უკეთესი შედეგი გამოიღო. XGBoost-ზე საუკეთესო პარამეტრების ხელით შერჩევის შემდეგ დანარჩენ ორ მოდელზე ოპტიმალური პარამეტრების შერჩევა რთული აღარ ყოფილა.
+
+მოდელის სიძლიერის შესაფასებელ მთავარ მეტრიკებად გამოყენებულია Precision, recall და F1 score. თითოეულ ტრენინგ ექსპერიმენტში მოდელის პარამეტრებთან ერთად დალოგილია test/validation-ის f1, precision, recall, auroc, prediction threshold მაჩვენებლები. ამასთანავე, json არტიფაქტებადაა შენახული ფაიფლაინის ყოველი ეტაპის ინფორმაცია: woe_encoding მაჩვენებლები, rfe-ს გადარჩეული და კორელაციის ფილტრის მიერ დადროპილი ცვლადები. შენახულია auprc, auroc და confusion matrix პლოტებიც.
+
+მოდელებმა შემდეგი Train/Validation სქორები დადეს:
+RandomForest - F1 0.75/0.71
+AdaBoost - F1 0.69/0.66
+XGBoost - F1 0.81/0.77
 
 # *MLFlow tracking*
-წრფივი რეგრესიის ექსპერიმენტი:
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_c1e8dd3f70c64bf68caf87b5383b6d1b
+ექსპერიმენტების სასაფლაო:
+https://dagshub.com/dimna21/ML_Assignment2/experiments
 
-ხის მოდელის ექსპერიმენტი:
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_7702289a9828469bad55790437f20e5b
+დარეგისტრირებული მოდელები:
 
-ხის მოდელის დამატებითი ექსპერიმენტები:
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_4928c2059ea041868a3e9104b5f566bc
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_4a2e3e471e764d298aa2d56b7ed4bbaa
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_1438ce557f1c48b386dde2fa394eb6a4
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_f789c6387cc24dbb831585c20df25d60
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_6413332904844893a426662f86283654
-https://dagshub.com/dimna21/ML_Assignment1/experiments#/experiment/m_42c1cc9a778f4f21b76dbf4abccb660a
-(ეს ექსპერიმენტები ჩავატარე, რადგან 0.856/0.81 R^2 შედეგები მაინც შეიძლება პატარა overfit-ად ჩაითვალოს. ამ ექსპერიმენტებში ხელით ვცვლიდი ხის სიღრმისა და ფოთლის გაყოფის რეინჯებს GridSearch-ისთვის და საუკეთესო გაუმჯობესება მინიმალური overfitის გაქრობის მხრივ იყო 0.84/0.81 მე-3 ექსპერიმენტში. ამ მოდელმა ტესტ სეტზე დაახლოებით იგივე შედეგი აჩვენა(0.18787 RMSLE), რაც საწყისმა მოდელმა, ეს კი იმის თქმის საფუძველს იძლევა, რომ მიკროსკოპული overfit პრობლემა არ ყოფილა და რეალურ გარემოში ორივე მოდელი თითქმის ანალოგიურ შედეგზე გადის)
-
-MLFlow-თი ჩაწერილია training ნაწილში მოცემული dictionary-ს პარამეტრების სივრცე თითოეული მოდელისთვის და დალოგილია RMSE, MAE და R^2 მეტრიკები train/test სეტებისთვის.
-
-საუკეთესო ხის მოდელმა Kaggle competition-ის ტესტ სეტზე აჩვენა 0.18204 RMSLE. იმის გათვალისწინებით, რომ leaderboardის თავში ხამები არიან, რომლებიც test set-ზე overfitting-ში ხარჯავენ თავისუფალ დროს და 0.00044 აქვთ ერორი, ამ შედარებით მარტივი არქიტექტურის მოდელებით მიღებული 0.18 ნორმალური შედეგია.
+RandomForest: https://dagshub.com/dimna21/ML_Assignment2/models/RF_Final/1
+AdaBoost: https://dagshub.com/dimna21/ML_Assignment2/models/ADA_Final/1
+XGBoost: https://dagshub.com/dimna21/ML_Assignment2/models/XGB_Final/1
 
