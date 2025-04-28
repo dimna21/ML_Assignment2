@@ -11,7 +11,9 @@ model_experiment_ada.ipynb - Adaboost მოდელის სრული pipe
 model_experiment_xgb.ipynb - XGBoost მოდელის სრული pipeline-ის აღწერა.
 
 model_inference_rf.ipynb - საუკეთესო RandomForest მოდელით ტესტ სეტზე პრედიქცია.
+
 model_inference_ada.ipynb - საუკეთესო Adaboost მოდელით ტესტ სეტზე პრედიქცია.
+
 model_inference_xgb.ipynb - საუკეთესო XGBoost მოდელით ტესტ სეტზე პრედიქცია.
 
 rf_final.csv, ada_final.csv, xgb_final.csv - თითოეული model_inference-ით დაგენერირებული პრედიქციები ტესტ სეტზე.
@@ -35,8 +37,11 @@ Feature selection ნაწილში გამოყენებულია 
 მოდელის სიძლიერის შესაფასებელ მთავარ მეტრიკებად გამოყენებულია precision, recall და F1 score. თითოეულ ტრენინგ ექსპერიმენტში მოდელის პარამეტრებთან ერთად დალოგილია test/validation-ის f1, precision, recall, auroc და prediction threshold მაჩვენებლები. ამასთანავე, json არტიფაქტებადაა შენახული ფაიფლაინის ყოველი ეტაპის ინფორმაცია: woe_encoding მაჩვენებლები, rfe-ს გადარჩეული და კორელაციის ფილტრის მიერ დადროპილი ცვლადები. შენახულია auprc, auroc და confusion matrix პლოტებიც.
 
 მოდელებმა შემდეგი Train/Validation სქორები დადეს:
+
 RandomForest - F1 0.75/0.71
+
 AdaBoost - F1 0.69/0.66
+
 XGBoost - F1 0.81/0.77
 
 # *MLFlow tracking*
